@@ -89,19 +89,165 @@ body {
   position: relative;
 }
 
-/* Watermark Pattern */
-.site-bg-pattern {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
+/* ==========================================================================
+   Section Watermark System (Diverse sizes, placements & styles)
+   ========================================================================== */
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(64px, 7vw, 100px) 0;
+}
+
+.section-wm {
+  position: absolute;
   pointer-events: none;
+  user-select: none;
   z-index: 0;
-  opacity: 0.025;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-repeat: repeat;
-  background-size: 320px auto;
+  background-repeat: no-repeat;
   filter: grayscale(100%);
+}
+
+/* 1. Hero: Grand Oversized Watermark Top-Right */
+.wm-hero {
+  top: -60px;
+  right: -80px;
+  width: clamp(380px, 44vw, 620px);
+  height: clamp(380px, 44vw, 620px);
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  background-position: center;
+  opacity: 0.045;
+  transform: rotate(10deg);
+}
+
+/* 2. Conditions: Twin Side Flanks */
+.wm-conditions-left {
+  top: 20%;
+  left: -50px;
+  width: 170px;
+  height: 170px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.035;
+  transform: rotate(-15deg);
+}
+
+.wm-conditions-right {
+  bottom: 12%;
+  right: -50px;
+  width: 210px;
+  height: 210px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.035;
+  transform: rotate(15deg);
+}
+
+/* 3. Network: Diagonal Corner Accents */
+.wm-network-top {
+  top: -30px;
+  left: 6%;
+  width: 150px;
+  height: 150px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.03;
+}
+
+.wm-network-bottom {
+  bottom: -40px;
+  right: 6%;
+  width: 260px;
+  height: 260px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.035;
+  transform: rotate(-8deg);
+}
+
+/* 4. Clients: Center Subtle Wide Watermark */
+.wm-clients-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 580px;
+  height: 320px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  background-position: center;
+  opacity: 0.025;
+}
+
+/* 5. Niches: Corner Badge */
+.wm-niches-corner {
+  top: 8%;
+  right: -40px;
+  width: 300px;
+  height: 300px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.035;
+  transform: rotate(18deg);
+}
+
+/* 6. Econ: Left Seal Behind Table */
+.wm-econ-seal {
+  bottom: 8%;
+  left: -60px;
+  width: 420px;
+  height: 420px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.03;
+}
+
+/* 8. Deal Steps: Subtle Horizontal Crest along Top of Sand Section */
+.wm-steps-bar {
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1100px;
+  height: 40px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-repeat: repeat-x;
+  background-size: 140px auto;
+  opacity: 0.03;
+}
+
+/* 9. Risks: Vertical Flank Watermarks */
+.wm-risks-left {
+  top: 25%;
+  left: 15px;
+  width: 140px;
+  height: 140px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.035;
+}
+
+.wm-risks-right {
+  bottom: 20%;
+  right: 15px;
+  width: 160px;
+  height: 160px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  opacity: 0.035;
+  transform: rotate(-12deg);
+}
+
+/* 10. Application: Grand Focal Emblem behind Left Text */
+.wm-apply-hero {
+  top: 50%;
+  left: -90px;
+  transform: translateY(-50%);
+  width: 480px;
+  height: 480px;
+  background-image: url('assets/images/cultform-logo-3d.png');
+  background-size: contain;
+  background-position: center;
+  opacity: 0.045;
 }
 
 .site-content-wrapper {
@@ -1153,12 +1299,12 @@ img {
 .calc-row-item .val { color: #ffffff; font-weight: 700; }
 
 /* ==========================================================================
-   Section 8: Deal Steps - Horizontal Pathway with Animated Laser Arrow
+   Section 8: Deal Steps - Warm Sand Solid Background
    ========================================================================== */
 .section-steps-highlight {
-  background: #f4efe6;
-  border-top: 1px solid #e5dfd4;
-  border-bottom: 1px solid #e5dfd4;
+  background: #f5efe6;
+  border-top: 1px solid #e2dacd;
+  border-bottom: 1px solid #e2dacd;
 }
 
 .steps-pathway {
@@ -1166,6 +1312,7 @@ img {
   grid-template-columns: repeat(5, 1fr);
   gap: 14px;
   position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1024px) {
@@ -1185,20 +1332,24 @@ img {
 
 .step-col-card {
   border-radius: var(--radius-md);
-  padding: 22px 18px;
+  padding: 24px 20px;
   background: #ffffff;
-  border: 1.5px solid rgba(226, 85, 43, 0.22);
+  border: 1px solid #e8dfd2;
+  border-top: 3.5px solid var(--terracotta);
   box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.06);
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.step-col-card:last-child {
+  border-top-color: var(--emerald);
 }
 
 .step-col-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px -6px rgba(226, 85, 43, 0.18);
-  border-color: var(--terracotta);
+  box-shadow: 0 14px 28px -6px rgba(226, 85, 43, 0.16);
 }
 
 .step-col-header {
@@ -1250,16 +1401,19 @@ img {
 }
 
 /* ==========================================================================
-   Section 9: Risks & FAQ (Contrasting Solid White Cards on Subtle Page BG)
+   Section 9: Risks & FAQ - Cool Ice Slate Background + Multi-colored Solid Cards
    ========================================================================== */
 .section-risks-clean {
-  background: #ffffff;
+  background: #edf2f7;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .risks-deck {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 820px) {
@@ -1269,25 +1423,21 @@ img {
 .risk-item {
   border-radius: var(--radius-md);
   padding: 26px 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px -3px rgba(15, 23, 42, 0.05);
   background: #ffffff;
-  border: 1.5px solid var(--border-subtle);
-  border-left: 5px solid var(--emerald);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease;
 }
 
 .risk-item:hover {
   transform: translateY(-2px);
-}
-
-.risk-item:nth-child(even) {
-  border-left-color: var(--terracotta);
+  box-shadow: 0 10px 24px -5px rgba(15, 23, 42, 0.08);
 }
 
 .risk-item h3 {
-  font-size: 1.16rem;
+  font-size: 1.14rem;
   margin-bottom: 10px;
   color: var(--text-main);
+  font-weight: 800;
 }
 
 .risk-item p {
@@ -1297,14 +1447,69 @@ img {
   line-height: 1.55;
 }
 
+/* Card 1: Solid Clean White with Emerald Accent */
+.risk-card-1 {
+  background: #ffffff;
+  border: 1px solid #d1fae5;
+  border-left: 5px solid #059669;
+}
+.risk-card-1 h3 { color: #065f46; }
+
+/* Card 2: Solid Dark Slate (Pure White text standout) */
+.risk-card-2 {
+  background: #111418;
+  border: 1px solid #2a313d;
+  border-left: 5px solid var(--terracotta);
+}
+.risk-card-2 h3 { color: #ffffff; }
+.risk-card-2 p { color: #cbd5e1; }
+
+/* Card 3: Solid Warm Peach/Terracotta */
+.risk-card-3 {
+  background: #fff4ee;
+  border: 1px solid #fed7aa;
+  border-left: 5px solid var(--terracotta);
+}
+.risk-card-3 h3 { color: #9a3412; }
+
+/* Card 4: Solid Soft Mint/Emerald */
+.risk-card-4 {
+  background: #eafaf3;
+  border: 1px solid #a7f3d0;
+  border-left: 5px solid var(--emerald);
+}
+.risk-card-4 h3 { color: #047857; }
+
+/* Card 5: Solid Crisp White */
+.risk-card-5 {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-left: 5px solid #475569;
+}
+
+/* Card 6: Solid Warm Light Sand */
+.risk-card-6 {
+  background: #fbf7ef;
+  border: 1px solid #eadecc;
+  border-left: 5px solid var(--terracotta);
+}
+.risk-card-6 h3 { color: #9a3412; }
+
 /* ==========================================================================
-   Section: Application Form
+   Section 10: Application Form - Clean White Background + Branded Elements
    ========================================================================== */
+.section-apply-branded {
+  background: #ffffff;
+  position: relative;
+}
+
 .apply-grid {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: clamp(32px, 5vw, 60px);
   align-items: start;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 900px) {
@@ -1315,8 +1520,9 @@ img {
   border-radius: var(--radius-lg);
   padding: clamp(28px, 4vw, 40px);
   background: #ffffff;
-  border: 1.5px solid var(--border-terracotta);
-  box-shadow: var(--shadow-md);
+  border: 2px solid var(--border-terracotta);
+  border-top: 4px solid var(--terracotta);
+  box-shadow: 0 16px 40px -10px rgba(226, 85, 43, 0.12), 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 .form-group {
@@ -1363,16 +1569,17 @@ img {
 
 .direct-box {
   margin-top: 30px;
-  padding: 24px;
+  padding: 24px 26px;
   border-radius: var(--radius-md);
-  background: var(--card-slate-light);
-  border: 1.5px solid var(--border-subtle);
+  background: #fff4ee;
+  border: 1.5px solid #fed7aa;
+  border-left: 5px solid var(--terracotta);
 }
 
 .direct-box h4 {
   font-size: 1.05rem;
   margin-bottom: 12px;
-  color: var(--text-main);
+  color: #9a3412;
 }
 
 .direct-row {
@@ -1465,9 +1672,6 @@ img {
 </head>
 <body>
 
-  <!-- Subtle Logo Pattern -->
-  <div class="site-bg-pattern" aria-hidden="true"></div>
-
   <div class="site-content-wrapper">
 
     <!-- Header -->
@@ -1499,9 +1703,10 @@ img {
       </div>
     </header>
 
-    <!-- HERO SECTION: Strictly 3 Lines -->
-    <section class="hero-section" id="hero">
-      <div class="container hero-grid">
+    <!-- HERO SECTION: Strictly 3 Lines + Grand Watermark -->
+    <section class="hero-section section" id="hero">
+      <div class="section-wm wm-hero" aria-hidden="true"></div>
+      <div class="container hero-grid" style="position: relative; z-index: 1;">
         <div>
           <div class="status-ticker">
             <div class="status-item">
@@ -1550,7 +1755,9 @@ img {
 
     <!-- SECTION 2: CONDITIONS (УСЛОВИЯ УЧАСТИЯ) -->
     <section class="section" id="conditions">
-      <div class="container">
+      <div class="section-wm wm-conditions-left" aria-hidden="true"></div>
+      <div class="section-wm wm-conditions-right" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Условия <span class="text-terracotta">участия</span></h2>
           <p class="section-lede">
@@ -1650,7 +1857,9 @@ img {
 
     <!-- SECTION 3: NETWORK -->
     <section class="section" id="network">
-      <div class="container">
+      <div class="section-wm wm-network-top" aria-hidden="true"></div>
+      <div class="section-wm wm-network-bottom" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Сеть <span class="text-emerald">площадок</span></h2>
           <p class="section-lede">
@@ -1687,7 +1896,8 @@ img {
 
     <!-- SECTION 4: CLIENTS (Emerald, Terracotta, Solid Dark Slate with Pure White text) -->
     <section class="section" id="clients">
-      <div class="container">
+      <div class="section-wm wm-clients-center" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Кто <span class="text-terracotta">платит</span> за печать</h2>
           <p class="section-lede">
@@ -1766,7 +1976,8 @@ img {
 
     <!-- SECTION 5: NICHES -->
     <section class="section" id="niches">
-      <div class="container">
+      <div class="section-wm wm-niches-corner" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Что <span class="text-terracotta">печатает</span> сеть</h2>
           <p class="section-lede">
@@ -1874,7 +2085,8 @@ img {
 
     <!-- SECTION 6: UNIT ECONOMICS -->
     <section class="section" id="econ">
-      <div class="container">
+      <div class="section-wm wm-econ-seal" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Откуда берутся <span class="text-terracotta">6% в месяц</span></h2>
           <p class="section-lede">
@@ -2001,7 +2213,8 @@ img {
 
     <!-- SECTION 8: HOW IT WORKS (Horizontal Columns Pathway with Animated Laser Arrows & Sand Background) -->
     <section class="section section-steps-highlight" id="how">
-      <div class="container">
+      <div class="section-wm wm-steps-bar" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Как проходит <span class="text-terracotta">сделка</span></h2>
           <p class="section-lede">5 простых шагов от первого контакта до ежемесячных выплат на ваш счёт.</p>
@@ -2083,41 +2296,43 @@ img {
 
     <div class="laser-divider"></div>
 
-    <!-- SECTION 9: RISKS (FAQ) -->
+    <!-- SECTION 9: RISKS (FAQ with Multi-colored Cards) -->
     <section class="section section-risks-clean" id="risks">
-      <div class="container">
+      <div class="section-wm wm-risks-left" aria-hidden="true"></div>
+      <div class="section-wm wm-risks-right" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Честные ответы на <span class="text-emerald">вопросы</span></h2>
           <p class="section-lede">Открыто говорим о рисках и механизмах защиты капитала.</p>
         </div>
 
         <div class="risks-deck">
-          <div class="risk-item">
+          <div class="risk-item risk-card-1">
             <h3>Что если заказов станет меньше?</h3>
             <p>Арендная плата фиксирована договором. Риск загрузки несёт CULTFORM за счёт маржи площадок и резервного фонда.</p>
           </div>
 
-          <div class="risk-item">
+          <div class="risk-item risk-card-2">
             <h3>Чьё оборудование юридически?</h3>
             <p>Ваше. Оформляется по договору купли-продажи с серийными номерами в акте. Аренда не передаёт право собственности.</p>
           </div>
 
-          <div class="risk-item">
+          <div class="risk-item risk-card-3">
             <h3>Как выйти из сделки?</h3>
             <p>Расторжение с уведомлением. На выбор: возврат оборудования вам или выкуп CULTFORM по остаточной стоимости.</p>
           </div>
 
-          <div class="risk-item">
+          <div class="risk-item risk-card-4">
             <h3>Кто отвечает за поломки?</h3>
             <p>CULTFORM. Ремонт, замена сопел, плат и столов — полностью за счёт управляющей компании.</p>
           </div>
 
-          <div class="risk-item">
+          <div class="risk-item risk-card-5">
             <h3>Это инвестиционный продукт?</h3>
             <p>Нет. Это покупка оборудования и сдача в аренду. Обязательство одно: фиксированная арендная плата.</p>
           </div>
 
-          <div class="risk-item">
+          <div class="risk-item risk-card-6">
             <h3>Какие риски остаются на вас?</h3>
             <p>Риск контрагента (устойчивость CULTFORM), а также страновые и логистические риски площадок (детально в договоре).</p>
           </div>
@@ -2127,8 +2342,9 @@ img {
 
     <div class="laser-divider"></div>
 
-    <!-- SECTION 10: APPLICATION FORM -->
-    <section class="section" id="apply">
+    <!-- SECTION 10: APPLICATION FORM (Clean Branded Background) -->
+    <section class="section section-apply-branded" id="apply">
+      <div class="section-wm wm-apply-hero" aria-hidden="true"></div>
       <div class="container apply-grid">
         <div>
           <h2 class="section-title">Получить <span class="text-terracotta">финмодель</span> и договор</h2>
