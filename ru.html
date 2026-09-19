@@ -90,7 +90,7 @@ body {
 }
 
 /* ==========================================================================
-   Section Watermark System (Diverse sizes, placements & styles)
+   Brand Logo Sparkle & Constellation System (Unclipped, multi-scale, floating)
    ========================================================================== */
 .section {
   position: relative;
@@ -98,156 +98,87 @@ body {
   padding: clamp(64px, 7vw, 100px) 0;
 }
 
-.section-wm {
+@keyframes logoFloatA {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(6deg); }
+}
+
+@keyframes logoFloatB {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(7px) rotate(-6deg); }
+}
+
+@keyframes logoPulseGlow {
+  0%, 100% { opacity: 0.04; transform: scale(1); }
+  50% { opacity: 0.09; transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(226, 85, 43, 0.4)); }
+}
+
+.logo-sparkle {
   position: absolute;
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  background-image: url('assets/images/cultform-logo-3d.png');
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   filter: grayscale(100%);
+  transition: opacity 0.3s ease;
 }
 
-/* 1. Hero: Grand Oversized Watermark Top-Right */
-.wm-hero {
-  top: -60px;
-  right: -80px;
-  width: clamp(380px, 44vw, 620px);
-  height: clamp(380px, 44vw, 620px);
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  background-position: center;
+/* Sparkle Size Variations (All comfortably contained, zero clipping) */
+.sp-xs {
+  width: 28px;
+  height: 28px;
+  opacity: 0.055;
+  animation: logoFloatA 6s ease-in-out infinite;
+}
+
+.sp-sm {
+  width: 46px;
+  height: 46px;
   opacity: 0.045;
-  transform: rotate(10deg);
+  animation: logoFloatB 7.5s ease-in-out infinite;
 }
 
-/* 2. Conditions: Twin Side Flanks */
-.wm-conditions-left {
-  top: 20%;
-  left: -50px;
-  width: 170px;
-  height: 170px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  opacity: 0.035;
-  transform: rotate(-15deg);
+.sp-md {
+  width: 86px;
+  height: 86px;
+  opacity: 0.04;
+  animation: logoFloatA 9s ease-in-out infinite;
 }
 
-.wm-conditions-right {
-  bottom: 12%;
-  right: -50px;
-  width: 210px;
-  height: 210px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  opacity: 0.035;
-  transform: rotate(15deg);
-}
-
-/* 3. Network: Diagonal Corner Accents */
-.wm-network-top {
-  top: -30px;
-  left: 6%;
-  width: 150px;
-  height: 150px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  opacity: 0.03;
-}
-
-.wm-network-bottom {
-  bottom: -40px;
-  right: 6%;
-  width: 260px;
-  height: 260px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  opacity: 0.035;
-  transform: rotate(-8deg);
-}
-
-/* 4. Clients: Center Subtle Wide Watermark */
-.wm-clients-center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 580px;
-  height: 320px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  background-position: center;
-  opacity: 0.025;
-}
-
-/* 5. Niches: Corner Badge */
-.wm-niches-corner {
-  top: 8%;
-  right: -40px;
-  width: 300px;
-  height: 300px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  opacity: 0.035;
-  transform: rotate(18deg);
-}
-
-/* 6. Econ: Left Seal Behind Table */
-.wm-econ-seal {
-  bottom: 8%;
-  left: -60px;
-  width: 420px;
-  height: 420px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  opacity: 0.03;
-}
-
-/* 8. Deal Steps: Subtle Horizontal Crest along Top of Sand Section */
-.wm-steps-bar {
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 1100px;
-  height: 40px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-repeat: repeat-x;
-  background-size: 140px auto;
-  opacity: 0.03;
-}
-
-/* 9. Risks: Vertical Flank Watermarks */
-.wm-risks-left {
-  top: 25%;
-  left: 15px;
+.sp-lg {
   width: 140px;
   height: 140px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
   opacity: 0.035;
+  animation: logoFloatB 11s ease-in-out infinite;
 }
 
-.wm-risks-right {
-  bottom: 20%;
-  right: 15px;
-  width: 160px;
-  height: 160px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  opacity: 0.035;
-  transform: rotate(-12deg);
+.sp-xl {
+  width: 220px;
+  height: 220px;
+  opacity: 0.03;
 }
 
-/* 10. Application: Grand Focal Emblem behind Left Text */
-.wm-apply-hero {
-  top: 50%;
-  left: -90px;
-  transform: translateY(-50%);
-  width: 480px;
-  height: 480px;
-  background-image: url('assets/images/cultform-logo-3d.png');
-  background-size: contain;
-  background-position: center;
+.sp-hero {
+  width: clamp(260px, 28vw, 380px);
+  height: clamp(260px, 28vw, 380px);
   opacity: 0.045;
+  animation: logoFloatA 14s ease-in-out infinite;
+}
+
+/* Sparkle Effects */
+.sp-tint {
+  filter: sepia(100%) hue-rotate(330deg) saturate(300%) opacity(0.06);
+}
+
+.sp-emerald {
+  filter: sepia(100%) hue-rotate(90deg) saturate(250%) opacity(0.06);
+}
+
+.sp-glow {
+  animation: logoPulseGlow 5.5s ease-in-out infinite;
 }
 
 .site-content-wrapper {
@@ -1705,7 +1636,14 @@ img {
 
     <!-- HERO SECTION: Strictly 3 Lines + Grand Watermark -->
     <section class="hero-section section" id="hero">
-      <div class="section-wm wm-hero" aria-hidden="true"></div>
+      <!-- Sparkle Constellation (Unclipped, multi-scale, floating) -->
+      <div class="logo-sparkle sp-hero" style="top: 15px; right: 25px;"></div>
+      <div class="logo-sparkle sp-xs sp-tint" style="top: 25px; left: 14%;"></div>
+      <div class="logo-sparkle sp-sm sp-glow" style="top: 42%; left: 45%;"></div>
+      <div class="logo-sparkle sp-md" style="bottom: 15px; left: 3%;"></div>
+      <div class="logo-sparkle sp-xs" style="bottom: 40px; right: 38%;"></div>
+      <div class="logo-sparkle sp-sm sp-emerald" style="top: 120px; right: 8%;"></div>
+
       <div class="container hero-grid" style="position: relative; z-index: 1;">
         <div>
           <div class="status-ticker">
@@ -1755,8 +1693,13 @@ img {
 
     <!-- SECTION 2: CONDITIONS (УСЛОВИЯ УЧАСТИЯ) -->
     <section class="section" id="conditions">
-      <div class="section-wm wm-conditions-left" aria-hidden="true"></div>
-      <div class="section-wm wm-conditions-right" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-lg" style="top: 25px; right: 3%;"></div>
+      <div class="logo-sparkle sp-md sp-tint" style="top: 60px; left: 3%;"></div>
+      <div class="logo-sparkle sp-xs sp-glow" style="top: 48%; right: 18%;"></div>
+      <div class="logo-sparkle sp-sm" style="bottom: 120px; left: 5%;"></div>
+      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 25px; right: 4%;"></div>
+      <div class="logo-sparkle sp-xs" style="bottom: 15px; left: 35%;"></div>
+
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Условия <span class="text-terracotta">участия</span></h2>
@@ -1857,8 +1800,12 @@ img {
 
     <!-- SECTION 3: NETWORK -->
     <section class="section" id="network">
-      <div class="section-wm wm-network-top" aria-hidden="true"></div>
-      <div class="section-wm wm-network-bottom" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-md" style="top: 20px; left: 4%;"></div>
+      <div class="logo-sparkle sp-lg sp-tint" style="top: 40px; right: 4%;"></div>
+      <div class="logo-sparkle sp-xs sp-glow" style="top: 48%; left: 45%;"></div>
+      <div class="logo-sparkle sp-sm sp-emerald" style="bottom: 40px; left: 3%;"></div>
+      <div class="logo-sparkle sp-md" style="bottom: 20px; right: 12%;"></div>
+
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Сеть <span class="text-emerald">площадок</span></h2>
@@ -1896,7 +1843,12 @@ img {
 
     <!-- SECTION 4: CLIENTS (Emerald, Terracotta, Solid Dark Slate with Pure White text) -->
     <section class="section" id="clients">
-      <div class="section-wm wm-clients-center" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-sm" style="top: 25px; left: 3%;"></div>
+      <div class="logo-sparkle sp-xl sp-glow" style="top: 15%; left: 50%; transform: translateX(-50%); opacity: 0.025;"></div>
+      <div class="logo-sparkle sp-xs sp-tint" style="top: 45px; right: 6%;"></div>
+      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 20px; right: 3%;"></div>
+      <div class="logo-sparkle sp-sm" style="bottom: 25px; left: 12%;"></div>
+
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Кто <span class="text-terracotta">платит</span> за печать</h2>
@@ -1976,7 +1928,12 @@ img {
 
     <!-- SECTION 5: NICHES -->
     <section class="section" id="niches">
-      <div class="section-wm wm-niches-corner" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-lg" style="top: 20px; right: 4%;"></div>
+      <div class="logo-sparkle sp-xs sp-tint" style="top: 50px; left: 4%;"></div>
+      <div class="logo-sparkle sp-md sp-glow" style="bottom: 40px; left: 3%;"></div>
+      <div class="logo-sparkle sp-sm sp-emerald" style="bottom: 25px; right: 8%;"></div>
+      <div class="logo-sparkle sp-xs" style="top: 42%; right: 30%;"></div>
+
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Что <span class="text-terracotta">печатает</span> сеть</h2>
@@ -2085,7 +2042,11 @@ img {
 
     <!-- SECTION 6: UNIT ECONOMICS -->
     <section class="section" id="econ">
-      <div class="section-wm wm-econ-seal" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-xl" style="top: 30px; left: 2%; opacity: 0.03;"></div>
+      <div class="logo-sparkle sp-sm sp-tint sp-glow" style="top: 35px; right: 8%;"></div>
+      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 30px; right: 4%;"></div>
+      <div class="logo-sparkle sp-xs" style="bottom: 45px; left: 45%;"></div>
+
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Откуда берутся <span class="text-terracotta">6% в месяц</span></h2>
@@ -2159,6 +2120,10 @@ img {
 
     <!-- SECTION 7: CALCULATOR (Max 10 Printers, Solid Dark with White Text) -->
     <section class="section" id="calc">
+      <div class="logo-sparkle sp-sm sp-tint" style="top: 25px; left: 4%;"></div>
+      <div class="logo-sparkle sp-md sp-glow" style="bottom: 25px; right: 5%;"></div>
+      <div class="logo-sparkle sp-xs" style="top: 45px; right: 12%;"></div>
+
       <div class="container">
         <div class="calc-cockpit has-laser-line">
           <div class="calc-grid">
@@ -2213,7 +2178,12 @@ img {
 
     <!-- SECTION 8: HOW IT WORKS (Horizontal Columns Pathway with Animated Laser Arrows & Sand Background) -->
     <section class="section section-steps-highlight" id="how">
-      <div class="section-wm wm-steps-bar" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-md" style="top: 20px; left: 3%;"></div>
+      <div class="logo-sparkle sp-xs sp-tint sp-glow" style="top: 25px; right: 5%;"></div>
+      <div class="logo-sparkle sp-sm" style="bottom: 25px; left: 18%;"></div>
+      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 20px; right: 4%;"></div>
+      <div class="logo-sparkle sp-xs" style="bottom: 35px; right: 42%;"></div>
+
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Как проходит <span class="text-terracotta">сделка</span></h2>
@@ -2298,8 +2268,12 @@ img {
 
     <!-- SECTION 9: RISKS (FAQ with Multi-colored Cards) -->
     <section class="section section-risks-clean" id="risks">
-      <div class="section-wm wm-risks-left" aria-hidden="true"></div>
-      <div class="section-wm wm-risks-right" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-lg" style="top: 25px; left: 3%;"></div>
+      <div class="logo-sparkle sp-sm sp-tint" style="top: 35px; right: 4%;"></div>
+      <div class="logo-sparkle sp-xs sp-glow" style="top: 50%; left: 48%;"></div>
+      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 20px; right: 3%;"></div>
+      <div class="logo-sparkle sp-sm" style="bottom: 25px; left: 6%;"></div>
+
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
           <h2 class="section-title">Честные ответы на <span class="text-emerald">вопросы</span></h2>
@@ -2344,7 +2318,12 @@ img {
 
     <!-- SECTION 10: APPLICATION FORM (Clean Branded Background) -->
     <section class="section section-apply-branded" id="apply">
-      <div class="section-wm wm-apply-hero" aria-hidden="true"></div>
+      <div class="logo-sparkle sp-xl sp-glow" style="top: 30px; left: 3%; opacity: 0.035;"></div>
+      <div class="logo-sparkle sp-sm sp-tint" style="top: 25px; right: 6%;"></div>
+      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 30px; left: 8%;"></div>
+      <div class="logo-sparkle sp-xs" style="bottom: 40px; right: 4%;"></div>
+      <div class="logo-sparkle sp-sm" style="top: 48%; right: 45%;"></div>
+
       <div class="container apply-grid">
         <div>
           <h2 class="section-title">Получить <span class="text-terracotta">финмодель</span> и договор</h2>
