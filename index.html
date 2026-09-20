@@ -181,6 +181,19 @@ body {
   animation: logoPulseGlow 5.5s ease-in-out infinite;
 }
 
+/* Text Protection & Mobile Clean Backgrounds */
+.section-head, .hero-title-cinematic, .hero-lede, .section-title, .section-lede {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  /* On mobile, completely hide floating background logos so all text is 100% clean and pristine */
+  .logo-sparkle {
+    display: none !important;
+  }
+}
+
 .site-content-wrapper {
   position: relative;
   z-index: 1;
@@ -1634,33 +1647,10 @@ img {
       </div>
     </header>
 
-    <!-- HERO SECTION: Strictly 3 Lines + Grand Watermark -->
+    <!-- HERO SECTION: Strictly 3 Lines -->
     <section class="hero-section section" id="hero">
-      <!-- Sparkle Constellation (Unclipped, multi-scale, floating) -->
-      <div class="logo-sparkle sp-hero" style="top: 15px; right: 25px;"></div>
-      <div class="logo-sparkle sp-xs sp-tint" style="top: 25px; left: 14%;"></div>
-      <div class="logo-sparkle sp-sm sp-glow" style="top: 42%; left: 45%;"></div>
-      <div class="logo-sparkle sp-md" style="bottom: 15px; left: 3%;"></div>
-      <div class="logo-sparkle sp-xs" style="bottom: 40px; right: 38%;"></div>
-      <div class="logo-sparkle sp-sm sp-emerald" style="top: 120px; right: 8%;"></div>
-
       <div class="container hero-grid" style="position: relative; z-index: 1;">
         <div>
-          <div class="status-ticker">
-            <div class="status-item">
-              <span class="status-dot active"></span>
-              <span>Ростов: <strong class="text-emerald">30 принтеров</strong> в работе</span>
-            </div>
-            <div class="status-item">
-              <span class="status-dot launching"></span>
-              <span>Аланья: <strong class="text-terracotta">запуск площадки</strong></span>
-            </div>
-            <div class="status-item">
-              <span class="status-dot prep"></span>
-              <span>Молдова: подготовка</span>
-            </div>
-          </div>
-
           <!-- Headline strictly in 3 balanced lines -->
           <h1 class="hero-title-cinematic">
             <span class="line-1">Вы покупаете 3D-принтер,</span>
@@ -1678,9 +1668,10 @@ img {
           </div>
         </div>
 
-        <!-- 3D Artwork Podium with Sweeping Laser Scanner -->
+        <!-- 3D Artwork Podium with Sweeping Laser Scanner & Clean Logo Watermark -->
         <div class="hero-artwork-stage">
           <div class="hero-ambient-glow"></div>
+          <div class="logo-sparkle sp-hero" style="top: -20px; right: -10px;"></div>
           <div class="hero-podium-card">
             <img src="assets/images/hero-printer-podium.jpg" alt="3D Принтер CULTFORM на архитектурном подиуме" class="hero-podium-img">
             <div class="hero-laser-scanner"></div>
@@ -2042,10 +2033,9 @@ img {
 
     <!-- SECTION 6: UNIT ECONOMICS -->
     <section class="section" id="econ">
-      <div class="logo-sparkle sp-xl" style="top: 30px; left: 2%; opacity: 0.03;"></div>
-      <div class="logo-sparkle sp-sm sp-tint sp-glow" style="top: 35px; right: 8%;"></div>
-      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 30px; right: 4%;"></div>
-      <div class="logo-sparkle sp-xs" style="bottom: 45px; left: 45%;"></div>
+      <div class="logo-sparkle sp-md sp-emerald" style="bottom: 25px; right: 4%;"></div>
+      <div class="logo-sparkle sp-sm sp-tint sp-glow" style="bottom: 35px; left: 4%;"></div>
+      <div class="logo-sparkle sp-xs" style="top: 25px; right: 6%;"></div>
 
       <div class="container" style="position: relative; z-index: 1;">
         <div class="section-head">
